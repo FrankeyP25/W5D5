@@ -24,6 +24,8 @@ def harrison_ford
   Actor.joins(:movies).where(actor: {:name = 'Harrison Ford'}).
   # .where_not(actor[0] = 'Harrison Ford')
 end
+#trying to commit again
+
 
 def biggest_cast
   # Consider the following:
