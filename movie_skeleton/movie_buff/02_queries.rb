@@ -53,9 +53,17 @@ def most_supportive
   Actor
     .select('actors.id', 'actors.name', 'COUNT(castings.actor_id) AS rolls')
     .joins(:castings)
-    .where.not( castings: { ord: 1 })
+    .where( 'castings.ord > 1')
     .group('actors.id')
     .order('rolls DESC')
     .limit(2)
+
+    # Actor
+    # .select(:id, :name, "COUNT(*) AS roles")
+    # .joins(:castings)
+    # .where('castings.ord != 1')
+    # .group("actors.id")
+    # .order("COUNT(*) DESC")
+    # .limit(2)
 end
 #[{"id"=>44, "name"=>"Robert Duvall", "rolls"=>20}, {"id"=>16, "name"=>"Gene Hackman", "rolls"=>20}]
